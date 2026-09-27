@@ -1,119 +1,130 @@
-/* =========================
-   PASSWORD
-========================= */
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-const PASSWORD = "23/06/26";
+    <title>Per te ❤️</title>
 
+    <link rel="stylesheet" href="style.css">
+</head>
 
-function controllaPassword() {
+<body>
 
-    const inserita =
-        document.getElementById("password").value;
+    <!-- SCHERMATA PASSWORD -->
 
-    const errore =
-        document.getElementById("errore");
+    <div id="login">
 
-    if (inserita === PASSWORD) {
+        <div class="login-box">
 
-        // Nasconde la schermata password
-        document.getElementById("login").style.display = "none";
+            <div class="big-heart">❤️</div>
 
-        // Mostra la pagina
-        document.getElementById("pagina").style.display = "block";
+            <h1>Ho una sorpresa per te...</h1>
 
-        // Avvia i cuori
-        setInterval(creaCuore, 500);
+            <p>Inserisci la nostra data ❤️</p>
 
-    } else {
+            <input
+                type="password"
+                id="password"
+                placeholder="23/06/26"
+            >
 
-        errore.innerHTML =
-            "Password sbagliata ❤️ Riprova.";
+            <button onclick="controllaPassword()">
+                Apri la sorpresa 💕
+            </button>
 
-    }
-}
+            <p id="errore"></p>
 
+        </div>
 
-/* Permette di premere INVIO */
-
-document
-    .getElementById("password")
-    .addEventListener("keydown", function(event) {
-
-        if (event.key === "Enter") {
-
-            controllaPassword();
-
-        }
-
-    });
+    </div>
 
 
-/* =========================
-   MUSICA
-========================= */
+    <!-- PAGINA ROMANTICA -->
 
-const music =
-    document.getElementById("music");
+    <div id="pagina">
 
-const musicButton =
-    document.getElementById("musicButton");
+        <main class="container">
 
-let musicaAttiva = false;
+            <div class="cuore">❤️</div>
 
+            <h1>Ho una cosa da dirti...</h1>
 
-function gestisciMusica() {
-
-    if (!musicaAttiva) {
-
-        music.play();
-
-        musicButton.innerHTML =
-            "⏸️ Metti in pausa";
-
-        musicaAttiva = true;
-
-    } else {
-
-        music.pause();
-
-        musicButton.innerHTML =
-            "🎵 Continua la canzone";
-
-        musicaAttiva = false;
-
-    }
-
-}
+            <p class="intro">
+                Anche se litighiamo,<br>
+                anche se abbiamo tante difficoltà,<br>
+                io continuerò sempre ad amarti.
+            </p>
 
 
-/* =========================
-   CUORI
-========================= */
+            <!-- FOTO -->
 
-function creaCuore() {
+            <div class="gallery">
 
-    const heart =
-        document.createElement("div");
+                <img src="IMG_1317.jpeg" alt="Una nostra foto">
 
-    heart.classList.add("heart");
+                <img src="IMG_1242.jpeg" alt="Una nostra foto">
 
-    heart.innerHTML = "❤️";
+                <img src="IMG_1243.jpeg" alt="Una nostra foto">
 
-    heart.style.left =
-        Math.random() * 100 + "vw";
+            </div>
 
-    heart.style.fontSize =
-        (15 + Math.random() * 25) + "px";
 
-    heart.style.animationDuration =
-        (4 + Math.random() * 5) + "s";
+            <!-- LETTERA -->
 
-    document.body.appendChild(heart);
+            <div class="letter">
 
-    setTimeout(() => {
+                <h2>Per te ❤️</h2>
 
-        heart.remove();
+                <p>
+                    Anche se litighiamo e abbiamo tante difficoltà,
+                    continuerò sempre ad amarti,
+                    perché al momento sei tu il mio mondo.
+                </p>
 
-    }, 9000);
+                <p>
+                    Voglio continuare a creare ricordi insieme a te,
+                    ridere con te, vivere momenti belli
+                    e superare insieme quelli più difficili.
+                </p>
 
-}
+                <div class="final-heart">
+                    ❤️
+                </div>
+
+            </div>
+
+
+            <!-- CANZONE -->
+
+            <div class="music">
+
+                <h2>🎵 La nostra canzone</h2>
+
+                <p>
+                    Premi play per ascoltarla ❤️
+                </p>
+
+                <iframe
+                    src="https://www.youtube.com/embed/n5RoTU2intE"
+                    title="La nostra canzone"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+
+            <p class="footer">
+                Creato con ❤️ solo per te
+            </p>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
