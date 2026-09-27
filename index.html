@@ -1,0 +1,175 @@
+# Installa prima:
+# pip install qrcode[pil]
+
+import qrcode
+
+# =========================
+# DATI DELLA PAGINA
+# =========================
+
+testo = """
+Anche se litighiamo e abbiamo tante difficoltà,
+continuerò sempre ad amarti,
+perché al momento sei tu il mio mondo.
+"""
+
+musica = "https://www.youtube.com/embed/n5RoTU2intE?autoplay=1&loop=1&playlist=n5RoTU2intE"
+
+# Inserisci qui il vero link pubblico della tua pagina
+LINK_PUBBLICO = "https://TUO-LINK.netlify.app"
+
+
+# =========================
+# CREA QR CODE
+# =========================
+
+qr = qrcode.QRCode(
+    version=5,
+    error_correction=qrcode.constants.ERROR_CORRECT_H,
+    box_size=12,
+    border=3
+)
+
+qr.add_data(LINK_PUBBLICO)
+qr.make(fit=True)
+
+immagine_qr = qr.make_image(
+    fill_color="#7B2CBF",
+    back_color="white"
+)
+
+immagine_qr.save("qr_amore_viola.png")
+
+print("💜 QR code creato: qr_amore_viola.png")
+
+
+# =========================
+# CREA PAGINA HTML
+# =========================
+
+html = f"""<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Per te ❤️</title>
+
+<style>
+
+body {{
+    margin: 0;
+    background: linear-gradient(135deg, #160713, #4b123d);
+    color: white;
+    font-family: Georgia, serif;
+    text-align: center;
+}}
+
+.container {{
+    max-width: 900px;
+    margin: auto;
+    padding: 50px 20px;
+}}
+
+h1 {{
+    font-size: 60px;
+}}
+
+p {{
+    font-size: 23px;
+    line-height: 1.8;
+}}
+
+.foto {{
+    width: 30%;
+    margin: 1%;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px black;
+}}
+
+.letter {{
+    margin-top: 40px;
+    padding: 40px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.1);
+}}
+
+.cuore {{
+    font-size: 60px;
+    animation: battito 1s infinite;
+}}
+
+@keyframes battito {{
+    50% {{
+        transform: scale(1.2);
+    }}
+}}
+
+iframe {{
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}}
+
+@media(max-width:600px) {{
+    .foto {{
+        width: 90%;
+        margin: 10px;
+    }}
+
+    h1 {{
+        font-size: 45px;
+    }}
+}}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="cuore">❤️</div>
+
+    <h1>Ho una cosa da dirti...</h1>
+
+    <p>
+        Anche se litighiamo,<br>
+        anche se abbiamo tante difficoltà,<br>
+        io continuerò sempre ad amarti.
+    </p>
+
+    <div>
+        <img class="foto" src="IMG_1317.jpeg">
+        <img class="foto" src="IMG_1242.jpeg">
+        <img class="foto" src="IMG_1243.jpeg">
+    </div>
+
+    <div class="letter">
+
+        <h2>Per te ❤️</h2>
+
+        <p>
+        {testo}
+        </p>
+
+        <h2>❤️</h2>
+
+    </div>
+
+    <iframe
+        src="{musica}"
+        allow="autoplay">
+    </iframe>
+
+</div>
+
+</body>
+</html>
+"""
+
+with open("index.html", "w", encoding="utf-8") as file:
+    file.write(html)
+
+print("❤️ Pagina creata: index.html")
+print("💜 QR creato: qr_amore_viola.png")
