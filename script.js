@@ -1,7 +1,3 @@
-/* =========================
-   PASSWORD
-========================= */
-
 const PASSWORD = "23/06/26";
 
 
@@ -13,27 +9,27 @@ function controllaPassword() {
     const errore =
         document.getElementById("errore");
 
+
     if (inserita === PASSWORD) {
 
-        // Nasconde la schermata password
-        document.getElementById("login").style.display = "none";
+        document.getElementById("login").style.display =
+            "none";
 
-        // Mostra la pagina
-        document.getElementById("pagina").style.display = "block";
+        document.getElementById("pagina").style.display =
+            "block";
 
-        // Avvia i cuori
-        setInterval(creaCuore, 500);
+        creaCuori();
 
     } else {
 
         errore.innerHTML =
-            "Password sbagliata ❤️ Riprova.";
+            "La password non è corretta ❤️";
 
     }
 }
 
 
-/* Permette di premere INVIO */
+/* Premere INVIO funziona */
 
 document
     .getElementById("password")
@@ -49,71 +45,47 @@ document
 
 
 /* =========================
-   MUSICA
-========================= */
-
-const music =
-    document.getElementById("music");
-
-const musicButton =
-    document.getElementById("musicButton");
-
-let musicaAttiva = false;
-
-
-function gestisciMusica() {
-
-    if (!musicaAttiva) {
-
-        music.play();
-
-        musicButton.innerHTML =
-            "⏸️ Metti in pausa";
-
-        musicaAttiva = true;
-
-    } else {
-
-        music.pause();
-
-        musicButton.innerHTML =
-            "🎵 Continua la canzone";
-
-        musicaAttiva = false;
-
-    }
-
-}
-
-
-/* =========================
    CUORI
 ========================= */
 
 function creaCuore() {
 
-    const heart =
+    const cuore =
         document.createElement("div");
 
-    heart.classList.add("heart");
+    cuore.innerHTML = "❤️";
 
-    heart.innerHTML = "❤️";
+    cuore.style.position = "fixed";
 
-    heart.style.left =
+    cuore.style.bottom = "-30px";
+
+    cuore.style.left =
         Math.random() * 100 + "vw";
 
-    heart.style.fontSize =
+    cuore.style.fontSize =
         (15 + Math.random() * 25) + "px";
 
-    heart.style.animationDuration =
-        (4 + Math.random() * 5) + "s";
+    cuore.style.zIndex = "2000";
 
-    document.body.appendChild(heart);
+    cuore.style.pointerEvents = "none";
+
+    cuore.style.animation =
+        "salita 5s linear forwards";
+
+    document.body.appendChild(cuore);
+
 
     setTimeout(() => {
 
-        heart.remove();
+        cuore.remove();
 
-    }, 9000);
+    }, 5000);
+
+}
+
+
+function creaCuori() {
+
+    setInterval(creaCuore, 600);
 
 }
